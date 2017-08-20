@@ -1,15 +1,14 @@
 //package com.annayoungyeun.days.models.data;
 //
-//import com.annayoungyeun.days.models.User;
 //import org.springframework.data.repository.CrudRepository;
 //import org.springframework.stereotype.Repository;
 //
 //import javax.transaction.Transactional;
+//import java.util.List;
 //
 //@Repository
 //@Transactional
-//public interface UserDao extends CrudRepository<User, Integer> {
+//public interface ChronicleDao extends CrudRepository<ChronicleDao, Integer> {
 //
-//    User findByUsername(String username); //CRUD bookmark
-//
+//    List<ChronicleDao> findByUserId(int userId);
 //}
