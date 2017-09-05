@@ -79,31 +79,6 @@ public class EntryController {
         return "redirect:/days";
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void addBlank(){
-        //List of Users
-        List<User> users = (List<User>) userDao.findAll();
 
-        //find today's date and format it
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String date = now.format(formatter);
-
-        //loop through all users
-        for(User user : users){
-            //find if there are entries for today's date
-            List<Entry> todayEntry = entryDao.findByDateAndUserId(date, user.getId());
-
-            //if there is no entry for the day, save/post a blank line
-            if(todayEntry != null){
-                Entry blankEntry = new Entry();
-                blankEntry.setDate(date);
-                blankEntry.setUser(user);
-                blankEntry.setEntryText("\n");
-                entryDao.save(blankEntry);
-            }
-        }
-
-    }
 
 }

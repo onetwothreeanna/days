@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<p th:if="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
+<p th:unless="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
 
-<form th:unless="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
+<form th:if="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
 
     <div class="form-group">
         <label th:for="entryText">Entry</label>
