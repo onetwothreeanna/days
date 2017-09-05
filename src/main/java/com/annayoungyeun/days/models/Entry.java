@@ -25,9 +25,6 @@ public class Entry {
 
     @ManyToOne
     private User user;
-//
-//    @ManyToOne
-//    private Chronicle chronicle;
 
     //constructors
     public Entry(String entryText) {this.entryText = entryText;}
