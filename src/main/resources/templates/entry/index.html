@@ -18,9 +18,9 @@
     <input type="submit" value="add entryText" />
 </form>
 
-<ol th:each="entry : ${entries}">
-    <li th:text="${entry.getEntryText()}"></li>
-</ol>
+<ul th:each="entry : ${entries}">
+    <p th:text="${entry.getEntryText()}"></p>
+</ul>
 <br/>
 <form action="/user/logout" method="post">
     <input type="submit" class="logout" value="Logout" />

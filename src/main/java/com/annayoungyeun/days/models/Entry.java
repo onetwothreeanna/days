@@ -21,10 +21,10 @@ public class Entry {
     @Size(min=3, max=300)
     private String entryText;
 
-//    private String date;
-//
-//    @ManyToOne
-//    private User user;
+    private String date;
+
+    @ManyToOne
+    private User user;
 //
 //    @ManyToOne
 //    private Chronicle chronicle;
@@ -44,13 +44,13 @@ public class Entry {
 
     public void setEntryText(String entryText) {   this.entryText = entryText;   }
 
-//    public String getDate() {   return date;   }
-//
-//    public void setDate(String date) {   this.date = date;   }
-//
-//    public User getUser() {   return user;   }
-//
-//    public void setUser(User user) {   this.user = user;   }
+    public String getDate() {   return date;   }
+
+    public void setDate(String date) {   this.date = date;   }
+
+    public User getUser() {   return user;   }
+
+    public void setUser(User user) {   this.user = user;   }
 
 
 }
