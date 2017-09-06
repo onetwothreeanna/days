@@ -23,7 +23,7 @@ public class ScheduleController {
     @Autowired
     EntryDao entryDao;
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedDelay = 30000)
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -38,8 +38,8 @@ public class ScheduleController {
             //find if there are entries for today's date
             List<Entry> todayEntry = entryDao.findByDateAndUserId(date, user.getId());
 
-            //if there is no entry for the day, save/post a blank line
-            if(todayEntry != null){
+            //if there is no entry for the day, save a blank string
+            if(todayEntry.size() < 1){
                 Entry blankEntry = new Entry();
                 blankEntry.setDate(date);
                 blankEntry.setUser(user);
