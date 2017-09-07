@@ -19,7 +19,7 @@ public class User {
     private int id;
 
     @NotNull
-    @Size
+    @Size(min=3)
     private String username;
 
     @Email

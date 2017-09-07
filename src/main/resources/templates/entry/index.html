@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
+<head th:replace="fragments :: head"></head>
+
+
 <body>
+<h1 th:text="${title}">Days</h1>
+<nav th:replace="fragments :: navigation"></nav>
+
 
 <p th:if="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
 
@@ -24,9 +26,7 @@
     <p th:if="${#strings.isEmpty(entry.getEntryText())}">&nbsp;</p>
     <p th:text="${entry.getEntryText()}"></p>
 </ul>
-<br/>
-<form action="/user/logout" method="post">
-    <input type="submit" class="logout" value="Logout" />
-</form>
+
+
 </body>
 </html>

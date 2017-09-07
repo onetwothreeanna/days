@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8"/>
-<head></head>
+<head th:replace="fragments :: head"></head>
 
-<body class="container">
+
+<body>
+<h1 th:text="${title}">Days</h1>
 
 <br /> <br  />
 <h3 th:text = "${logoutMessage}"></h3>

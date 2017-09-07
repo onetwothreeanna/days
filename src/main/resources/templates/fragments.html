@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">days</title>
+</head>
+<body>
+
+<nav th:fragment="navigation">
+    <ul>
+        <a href="/days/">days home</a>
+        <form action="/user/logout" method="post">
+            <input type="submit" class="logout" value="Logout" />
+        </form>
+    </ul>
+</nav>
+
+</body>
+</html>

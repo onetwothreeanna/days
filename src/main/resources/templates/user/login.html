@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<meta charset="UTF-8"/>
+<head th:replace="fragments :: head"></head>
 
-<body class="container">
-<h1 th:text="${title}">Default Title</h1>
+
+<body>
+<h1 th:text="${title}">Days</h1>
 <br />
 <br />
 <form method = "post" th:object="${login}" >
