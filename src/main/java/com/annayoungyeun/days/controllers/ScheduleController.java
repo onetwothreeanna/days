@@ -23,7 +23,7 @@ public class ScheduleController {
     @Autowired
     EntryDao entryDao;
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
