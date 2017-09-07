@@ -14,5 +14,4 @@ public interface EntryDao extends CrudRepository<Entry, Integer> {
     List<Entry> findByUserId(int userId);
     List<Entry> findByUserIdOrderByIdDesc(int userId);
     List<Entry> findByDateAndUserId(String date, int userId);
-    //List<Entry> findByChronicleIdOrderByIdDesc(int chronicleId);
 }

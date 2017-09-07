@@ -22,8 +22,8 @@ import java.io.IOException;
 @WebFilter(filterName = "AuthenticationFilter", value = {"/*"})
 public class AuthenticationFilter implements Filter {
 
-    @Autowired
-    UserDao userDao;
+//    @Autowired
+//    UserDao userDao;
 
     private ServletContext context;
     @Override

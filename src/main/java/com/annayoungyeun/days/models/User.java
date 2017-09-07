@@ -38,6 +38,13 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Entry> entries = new ArrayList<>();
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Bundle> records = new ArrayList<>();
+
+    @OneToOne
+    private Archive archive;
+
     //constructors
     public User(String username, String email, String password) {
         this.username = username;
@@ -72,4 +79,12 @@ public class User {
     public List<Entry> getEntries() {    return entries;    }
 
     public void setEntries(List<Entry> entries) {    this.entries = entries;    }
+
+    public Archive getArchive() {    return archive;    }
+
+    public void setArchive(Archive archive) {    this.archive = archive;    }
+
+    public List<Bundle> getBundles() {   return records;   }
+
+    public void setBundles(List<Bundle> records) {   this.records = records;   }
 }

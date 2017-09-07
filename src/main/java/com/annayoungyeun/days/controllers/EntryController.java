@@ -1,8 +1,9 @@
 package com.annayoungyeun.days.controllers;
 
 import com.annayoungyeun.days.models.Entry;
-//import com.annayoungyeun.days.models.data.ChronicleDao;
+//import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.User;
+import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.data.EntryDao;
 //import com.annayoungyeun.days.models.data.UserDao;
 import com.annayoungyeun.days.models.data.UserDao;
@@ -30,9 +31,9 @@ public class EntryController {
     @Autowired
     private EntryDao entryDao;
 
-//    @Autowired
-//    private ChronicleDao chronicleDao;
-//
+    @Autowired
+    private ArchiveDao archiveDao;
+
     @Autowired
     private UserDao userDao;
 
