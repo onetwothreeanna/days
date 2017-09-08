@@ -32,8 +32,8 @@ public class ScheduleController {
     @Autowired
     ArchiveDao archiveDao;
 
-    @Scheduled(fixedDelay = 30000)
-//    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+ //   @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -59,7 +59,7 @@ public class ScheduleController {
 
             //find all entries for user by ID desc
             List<Entry> allEntries = entryDao.findByUserIdOrderByIdDesc(user.getId());
-            if(allEntries.size() > 10){ //checks this, but doesn't proceed.  Why?
+            if(allEntries.size() == 10){ //checks this, but doesn't proceed.  Why?
                 Bundle freshBundle = new Bundle();
                 String BundleString = "";
                 for(Entry entry : allEntries){
