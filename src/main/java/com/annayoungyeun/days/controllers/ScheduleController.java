@@ -1,7 +1,10 @@
 package com.annayoungyeun.days.controllers;
 
+import com.annayoungyeun.days.models.Bundle;
 import com.annayoungyeun.days.models.Entry;
 import com.annayoungyeun.days.models.User;
+import com.annayoungyeun.days.models.data.ArchiveDao;
+import com.annayoungyeun.days.models.data.BundleDao;
 import com.annayoungyeun.days.models.data.EntryDao;
 import com.annayoungyeun.days.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,14 @@ public class ScheduleController {
     @Autowired
     EntryDao entryDao;
 
-    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+    @Autowired
+    BundleDao bundleDao;
+
+    @Autowired
+    ArchiveDao archiveDao;
+
+    @Scheduled(fixedDelay = 30000)
+//    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -45,6 +55,20 @@ public class ScheduleController {
                 blankEntry.setUser(user);
                 blankEntry.setEntryText("   ");
                 entryDao.save(blankEntry);
+            }
+
+            //find all entries for user by ID desc
+            List<Entry> allEntries = entryDao.findByUserIdOrderByIdDesc(user.getId());
+            if(allEntries.size() > 10){ //checks this, but doesn't proceed.  Why?
+                Bundle freshBundle = new Bundle();
+                String BundleString = "";
+                for(Entry entry : allEntries){
+                    BundleString += entry.getDate() + "  " + entry.getEntryText() + " \n";
+                }
+                freshBundle.setUser(user);
+                freshBundle.setArchive(user.getArchive());
+                freshBundle.setBundleText(BundleString);
+                bundleDao.save(freshBundle);
             }
         }
 
