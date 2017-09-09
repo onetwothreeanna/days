@@ -5,6 +5,8 @@
     <title></title>
 </head>
 <body>
-
+<ul th:each="bundle : ${bundles}">
+    <p th:text="${bundle.getBundleText()}"></p>
+</ul>
 </body>
 </html>

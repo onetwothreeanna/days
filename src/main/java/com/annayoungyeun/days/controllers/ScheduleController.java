@@ -1,5 +1,6 @@
 package com.annayoungyeun.days.controllers;
 
+import com.annayoungyeun.days.models.Archive;
 import com.annayoungyeun.days.models.Bundle;
 import com.annayoungyeun.days.models.Entry;
 import com.annayoungyeun.days.models.User;
@@ -32,8 +33,8 @@ public class ScheduleController {
     @Autowired
     ArchiveDao archiveDao;
 
- //   @Scheduled(fixedDelay = 30000)
-    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+    @Scheduled(fixedDelay = 30000)
+   // @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -47,7 +48,6 @@ public class ScheduleController {
         for(User user : users){
             //find if there are entries for today's date
             List<Entry> todayEntry = entryDao.findByDateAndUserId(date, user.getId());
-
             //if there is no entry for the day, save a blank string
             if(todayEntry.size() < 1){
                 Entry blankEntry = new Entry();
@@ -59,17 +59,21 @@ public class ScheduleController {
 
             //find all entries for user by ID desc
             List<Entry> allEntries = entryDao.findByUserIdOrderByIdDesc(user.getId());
-            if(allEntries.size() == 10){ //checks this, but doesn't proceed.  Why?
+            //if entries reaches 100, bundle into one string, store in DB.
+            if(allEntries.size() > 10){
                 Bundle freshBundle = new Bundle();
                 String BundleString = "";
                 for(Entry entry : allEntries){
-                    BundleString += entry.getDate() + "  " + entry.getEntryText() + " \n";
+                    BundleString += entry.getDate() + "  " + entry.getEntryText() + "<br/>";
                 }
                 freshBundle.setUser(user);
                 freshBundle.setArchive(user.getArchive());
                 freshBundle.setBundleText(BundleString);
                 bundleDao.save(freshBundle);
+
+                //TODO - delete user's entries from entryDao once reached 100 to start fresh
             }
+
         }
 
     }

@@ -75,7 +75,7 @@ public class UserController {
             archive.setUser(user);  //set archive's user to new user
             archiveDao.save(archive);//save
             user.setArchive(archive);//set user's archive to new archive
-            userDao.save(user);//save again 
+            userDao.save(user);//save again
             return "user/index";
         }
         return "user/add";
