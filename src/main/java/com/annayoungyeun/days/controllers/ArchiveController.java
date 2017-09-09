@@ -1,15 +1,12 @@
 package com.annayoungyeun.days.controllers;
 
-import com.annayoungyeun.days.models.Archive;
 import com.annayoungyeun.days.models.Bundle;
 import com.annayoungyeun.days.models.User;
-import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.data.BundleDao;
 import com.annayoungyeun.days.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 

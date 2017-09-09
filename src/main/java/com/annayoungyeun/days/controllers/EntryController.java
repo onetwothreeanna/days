@@ -3,12 +3,10 @@ package com.annayoungyeun.days.controllers;
 import com.annayoungyeun.days.models.Entry;
 //import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.User;
-import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.data.EntryDao;
 //import com.annayoungyeun.days.models.data.UserDao;
 import com.annayoungyeun.days.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -32,9 +30,6 @@ public class EntryController {
     private EntryDao entryDao;
 
     @Autowired
-    private ArchiveDao archiveDao;
-
-    @Autowired
     private UserDao userDao;
 
     //main page - add an item, view this year's journal
@@ -42,7 +37,7 @@ public class EntryController {
     public String addEntry(Model model, HttpServletRequest request){
         //current user
         int currentUserId = userDao.findByUsername(
-                request.getSession().getAttribute("currentUser").toString()).getId();
+        request.getSession().getAttribute("currentUser").toString()).getId();
 
         //find today's date and format it
         LocalDateTime now = LocalDateTime.now();

@@ -16,15 +16,10 @@ public class Bundle {
     @PrimaryKeyJoinColumn(name="user_id", referencedColumnName="id")
     private User user;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name="archive_id", referencedColumnName="id")
-    private Archive archive;
-
     //constructors
-    public Bundle(String bundleText, User user, Archive archive) {
+    public Bundle(String bundleText, User user) {
         this.bundleText = bundleText;
         this.user = user;
-        this.archive = archive;
     }
 
     public Bundle(){   }
@@ -43,7 +38,4 @@ public class Bundle {
 
     public void setUser(User user) {   this.user = user;   }
 
-    public Archive getArchive() {   return archive;   }
-
-    public void setArchive(Archive archive) {   this.archive = archive;   }
 }

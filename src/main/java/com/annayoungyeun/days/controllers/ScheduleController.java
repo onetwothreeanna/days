@@ -1,10 +1,8 @@
 package com.annayoungyeun.days.controllers;
 
-import com.annayoungyeun.days.models.Archive;
 import com.annayoungyeun.days.models.Bundle;
 import com.annayoungyeun.days.models.Entry;
 import com.annayoungyeun.days.models.User;
-import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.data.BundleDao;
 import com.annayoungyeun.days.models.data.EntryDao;
 import com.annayoungyeun.days.models.data.UserDao;
@@ -22,16 +20,13 @@ import java.util.List;
 public class ScheduleController {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @Autowired
-    EntryDao entryDao;
+    private EntryDao entryDao;
 
     @Autowired
-    BundleDao bundleDao;
-
-    @Autowired
-    ArchiveDao archiveDao;
+    private BundleDao bundleDao;
 
     @Scheduled(fixedDelay = 30000)
    // @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
@@ -67,7 +62,6 @@ public class ScheduleController {
                     BundleString += entry.getDate() + "  " + entry.getEntryText() + "<br/>";
                 }
                 freshBundle.setUser(user);
-                freshBundle.setArchive(user.getArchive());
                 freshBundle.setBundleText(BundleString);
                 bundleDao.save(freshBundle);
 

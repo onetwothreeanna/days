@@ -1,9 +1,7 @@
 package com.annayoungyeun.days.controllers;
 
-import com.annayoungyeun.days.models.Archive;
 import com.annayoungyeun.days.models.Login;
 import com.annayoungyeun.days.models.User;
-import com.annayoungyeun.days.models.data.ArchiveDao;
 import com.annayoungyeun.days.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import java.util.List;
-
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
@@ -30,9 +26,6 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private ArchiveDao archiveDao;
-
 
     //---------------------------user sign up ------------------------------
 
@@ -70,12 +63,7 @@ public class UserController {
         }
 
         if (passwordsMatch) {
-            userDao.save(user);  //save user
-            Archive archive = new Archive(); //create new archive
-            archive.setUser(user);  //set archive's user to new user
-            archiveDao.save(archive);//save
-            user.setArchive(archive);//set user's archive to new archive
-            userDao.save(user);//save again
+            userDao.save(user);
             return "user/index";
         }
         return "user/add";
