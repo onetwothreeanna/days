@@ -55,11 +55,11 @@ public class ScheduleController {
             //find all entries for user by ID desc
             List<Entry> allEntries = entryDao.findByUserIdOrderByIdDesc(user.getId());
             //if entries reaches 100, bundle into one string, store in DB.
-            if(allEntries.size() > 10){
+            if(allEntries.size() > 5){
                 Bundle freshBundle = new Bundle();
                 String BundleString = "";
                 for(Entry entry : allEntries){
-                    BundleString += entry.getDate() + "  " + entry.getEntryText() + "<br/>";
+                    BundleString += entry.getDate() + "  " + entry.getEntryText() + "<br />\n";
                 }
                 freshBundle.setUser(user);
                 freshBundle.setBundleText(BundleString);
