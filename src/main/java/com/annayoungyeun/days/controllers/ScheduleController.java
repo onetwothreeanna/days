@@ -59,13 +59,12 @@ public class ScheduleController {
                 Bundle freshBundle = new Bundle();
                 String BundleString = "";
                 for(Entry entry : allEntries){
-                    BundleString += entry.getDate() + "  " + entry.getEntryText() + "<br />\n";
+                    BundleString += entry.getDate() + " " + entry.getEntryText() + "<br />\n";
+                    entryDao.delete(entry);
                 }
                 freshBundle.setUser(user);
                 freshBundle.setBundleText(BundleString);
                 bundleDao.save(freshBundle);
-
-                //TODO - delete user's entries from entryDao once reached 100 to start fresh
             }
 
         }

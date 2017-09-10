@@ -5,8 +5,10 @@
     <title></title>
 </head>
 <body>
-<ul th:each="bundle : ${bundles}">
-    <p th:utext="${bundle.getBundleText()}"></p>
-</ul>
+    <ul th:each="line : ${bundles}">
+
+        <p th:utext="${#strings.substring(line,11)}"></p>
+
+    </ul>
 </body>
 </html>

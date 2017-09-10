@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,7 +31,15 @@ public class ArchiveController {
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
 
         List<Bundle> bundles = bundleDao.findByUserIdOrderByIdDesc(user.getId());
-        model.addAttribute("bundles", bundles);
+        List<String> bundleStrings = new ArrayList<>();
+        //split bundles into a list of strings to pass into the view & separate date 
+        for (Bundle bundle: bundles){
+            String[] lines = bundle.getBundleText().split("\n");
+            for (String line: lines){
+                bundleStrings.add(line);
+            }
+        }
+        model.addAttribute("bundles", bundleStrings);
 
         return "archive/archive";
     }
