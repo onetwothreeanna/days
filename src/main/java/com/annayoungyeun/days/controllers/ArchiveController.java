@@ -32,7 +32,7 @@ public class ArchiveController {
 
         List<Bundle> bundles = bundleDao.findByUserIdOrderByIdDesc(user.getId());
         List<String> bundleStrings = new ArrayList<>();
-        //split bundles into a list of strings to pass into the view & separate date 
+        //split bundles into a list of strings to pass into the view & separate date
         for (Bundle bundle: bundles){
             String[] lines = bundle.getBundleText().split("\n");
             for (String line: lines){

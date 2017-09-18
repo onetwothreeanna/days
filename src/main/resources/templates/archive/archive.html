@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
+<head th:replace="fragments :: head"></head>
+
 <body>
-    <ul th:each="line : ${bundles}">
+<div class="page">
+    <div class="entries">
+        <ul th:each="line : ${bundles}">
 
-        <p th:utext="${#strings.substring(line,11)}"></p>
+            <p th:utext="${#strings.substring(line,11)}"></p>
 
-    </ul>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

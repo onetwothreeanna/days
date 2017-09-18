@@ -4,29 +4,32 @@
 
 
 <body>
-<h1 th:text="${title}">Days</h1>
-<nav th:replace="fragments :: navigation"></nav>
+<div class="page">
+    <h1 th:text="${title}">Days</h1>
+    <nav th:replace="fragments :: navigation"></nav>
 
 
-<p th:unless="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
+    <p th:if="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
 
-<form th:if="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
+    <div class="entries">
 
-    <div class="form-group">
-        <label th:for="entryText">Entry</label>
-        <input class="form-control" th:field="*{entryText}" />
-        <span th:errors="*{entryText}" class="error"></span>
+        <form th:unless="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
+
+            <div class="form-group">
+                <label th:for="entryText">Entry</label>
+                <input class="form-control" th:field="*{entryText}" />
+                <span th:errors="*{entryText}" class="error"></span>
+            </div>
+
+
+            <input type="submit" value="add entryText" />
+        </form>
+        <ul th:each="entry : ${entries}">
+            <p th:if="${#strings.isEmpty(entry.getEntryText())}">&nbsp;</p>
+            <p th:text="${entry.getEntryText()}"></p>
+        </ul>
     </div>
-
-
-    <input type="submit" value="add entryText" />
-</form>
-
-<ul th:each="entry : ${entries}">
-    <p th:if="${#strings.isEmpty(entry.getEntryText())}">&nbsp;</p>
-    <p th:text="${entry.getEntryText()}"></p>
-</ul>
-
+</div>
 
 </body>
 </html>

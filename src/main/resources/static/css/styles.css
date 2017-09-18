@@ -1,0 +1,82 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+}
+/* HTML5 display-role reset for older browsers */
+
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+span{
+    color: #4bdca3;
+    font-size: 140px;
+}
+
+.caption{
+    text-align: center;
+    font-size: 12px;
+}
+
+img{
+    display: block;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.page{
+    font-family: Helvetica;
+    font-size: 20px;
+    margin:100px;
+}
+
+.entries{
+    margin-top: 40px;
+    text-align: center;
+    color: navy;
+
+}
+
+.archive{
+    margin-top: 40px;
+    text-align: center;
+    color: #3eb149;
+}
+
+
+h1{
+    font-family: Helvetica;
+    font-size: 70px;
+    text-align: center;
+    color: #3eb149;
+    margin-top: 200px;
+}
+
+
+a{
+    text-decoration:none;
+    color:grey;
+}
+
+a:hover{
+    color:#3eb149;
+}
+
+nav{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+}

@@ -4,26 +4,28 @@
 
 
 <body>
-<h1 th:text="${title}">Days</h1>
-<br />
-<br />
-<form method = "post" th:object="${login}" >
-    <label class="form" th:for="username">Username </label>
-    <input type="text" th:field="*{username}" name="username" />
-    <span th:errors="*{username}" class="error"></span> <br /><br />
+<div class="page">
 
-    <label class="form" th:for="password">Password </label>
-    <input type="password" th:field="*{password}" name="password" />
-    <span th:errors="*{password}" class="error"></span> <br /><br />
+    <h1 th:text="${title}">Days</h1>
+    <br />
+    <br />
+    <form method = "post" th:object="${login}" >
+        <label class="form" th:for="username">Username </label>
+        <input type="text" th:field="*{username}" name="username" />
+        <span th:errors="*{username}" class="error"></span> <br /><br />
 
-    <input class="button" type="submit" value="Login" /> <br />
-    <p th:text = "${verifyError}"/>
-</form>
-<br/>
-<a href="/user/add">Create a user account.</a>
+        <label class="form" th:for="password">Password </label>
+        <input type="password" th:field="*{password}" name="password" />
+        <span th:errors="*{password}" class="error"></span> <br /><br />
+
+        <input class="button" type="submit" value="Login" /> <br />
+        <p th:text = "${verifyError}"/>
+    </form>
+    <br/>
+    <a href="/user/add">Create a user account.</a>
 
 
-
+</div>
 </body>
 
 </html>

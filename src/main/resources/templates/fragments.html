@@ -3,12 +3,15 @@
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <title th:text="${title}">days</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 
 <nav th:fragment="navigation">
     <ul>
-        <a href="/days/">days home</a>
+        <a href="/days/">days home</a>  |
+        <a href="/days/archive">archive</a>
+
         <form action="/user/logout" method="post">
             <input type="submit" class="logout" value="Logout" />
         </form>

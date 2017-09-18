@@ -28,8 +28,8 @@ public class ScheduleController {
     @Autowired
     private BundleDao bundleDao;
 
-    @Scheduled(fixedDelay = 30000)
-   // @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+  //  @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -55,7 +55,7 @@ public class ScheduleController {
             //find all entries for user by ID desc
             List<Entry> allEntries = entryDao.findByUserIdOrderByIdDesc(user.getId());
             //if entries reaches 100, bundle into one string, store in DB.
-            if(allEntries.size() > 5){
+            if(allEntries.size() == 100){
                 Bundle freshBundle = new Bundle();
                 String BundleString = "";
                 for(Entry entry : allEntries){
