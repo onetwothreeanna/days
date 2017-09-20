@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import java.util.prefs.*;
 
 @Controller
 @RequestMapping("user")
@@ -154,7 +156,23 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+    //---------------------------preferences handling-------------------------------
+    @RequestMapping(value = "preferences", method = RequestMethod.GET)
+    public String preferences(Model model) {
+        model.addAttribute("title", "days User Preferences");
+        return "user/preferences";
+    }
 
+    @RequestMapping(value = "preferences", params="color", method = RequestMethod.POST)
+    public String preferences(@RequestParam("color") String color, Model model){
+        Preferences pref = Preferences.userRoot();
+        String initColor = pref.get("color", "Blue");
+        pref.put("color", color);
+        System.out.println(pref.get(color, color));
+
+        model.addAttribute("title", "days User Preferences");
+        return "redirect:/days";
+    }
 
 }
 

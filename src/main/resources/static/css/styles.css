@@ -64,6 +64,29 @@ h1{
     margin-top: 200px;
 }
 
+.mint{
+    color: #03af8d;
+}
+.orange{
+    color: #af4803;
+}
+.kellygreen{
+    color: #02af11;
+}
+.navy{
+    color: #000547;
+}
+.purple{
+    color: #5a0175;
+}
+.burgundy{
+    color: #6d0026;
+}
+.mustard{
+    color: #6d4e00;
+}
+
+
 
 a{
     text-decoration:none;
