@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,6 @@ public class ArchiveController {
 
     @Autowired
     UserDao userDao;
-
 
     // view handler
     @RequestMapping(value = "/archive", method = RequestMethod.GET)
@@ -42,5 +40,7 @@ public class ArchiveController {
         model.addAttribute("bundles", bundleStrings);
 
         return "archive/archive";
+
     }
+
 }

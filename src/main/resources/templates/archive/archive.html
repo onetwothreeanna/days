@@ -4,6 +4,7 @@
 
 <body>
 <div class="page">
+    <nav th:replace="fragments :: navigation"></nav>
     <div class="entries">
         <ul th:each="line : ${bundles}">
 
