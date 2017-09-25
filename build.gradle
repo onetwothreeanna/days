@@ -40,6 +40,8 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('com.google.maps:google-maps-services:0.1.18')
+	compile('com.maxmind.geoip2:geoip2:2.9.0')
 }
 
 bootRun {

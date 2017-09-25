@@ -95,6 +95,10 @@ public class EntryController {
         String longitude =
                 response.getLocation().getLongitude().toString();
 
+        //TODO- add long/lat/city fields to entry, save info to new entries?  or just save to
+        // separate DAO to display on Google Map over time based on user only
+
+
         //find current date
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
