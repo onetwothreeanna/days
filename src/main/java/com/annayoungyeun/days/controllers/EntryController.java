@@ -2,9 +2,11 @@ package com.annayoungyeun.days.controllers;
 
 import com.annayoungyeun.days.models.Entry;
 //import com.annayoungyeun.days.models.data.ArchiveDao;
+import com.annayoungyeun.days.models.Location;
 import com.annayoungyeun.days.models.User;
 import com.annayoungyeun.days.models.data.EntryDao;
 //import com.annayoungyeun.days.models.data.UserDao;
+import com.annayoungyeun.days.models.data.LocationDao;
 import com.annayoungyeun.days.models.data.UserDao;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
@@ -38,12 +40,15 @@ public class EntryController {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private LocationDao locationDao;
+
     private DatabaseReader dbReader;
 
-//    public void GeoIPLocationService() throws IOException {
-//        File database = new File("/AnnaYoungyeun/code/days/src/main/resources/GeoLite2-City.mmdb");
-//        dbReader = new DatabaseReader.Builder(database).build();
-//    }
+    public EntryController() throws IOException {
+        File database = new File("/Users/AnnaYoungyeun/code/days/src/main/resources/GeoLite2-City.mmdb");
+        dbReader = new DatabaseReader.Builder(database).build();
+    }
 
     //main page - add an item, view this year's journal
     @RequestMapping(value="", method = RequestMethod.GET)
@@ -72,6 +77,7 @@ public class EntryController {
     public String addEntry(@ModelAttribute @Valid Entry newEntry, Errors errors, Model model, HttpServletRequest request)
             throws ServletException, IOException, GeoIp2Exception{
 
+        //error handling
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
         if(errors.hasErrors()){
             model.addAttribute("title", "days");
@@ -82,21 +88,21 @@ public class EntryController {
 
 
         //get user IP address
-        File database = new File("/Users/AnnaYoungyeun/code/days/src/main/resources/GeoLite2-City.mmdb/");
-        dbReader = new DatabaseReader.Builder(database).build();
         String ip = //request.getRemoteAddr(); hardcode in various IP addresses to test.  Localhost will not show actual IP addresses
-                "2602:30a:c0f0:4cf0:10ed:6619:e3d4:11ea";
+                "206.196.115.38";
         InetAddress ipAddress = InetAddress.getByName(ip);
         CityResponse response = dbReader.city(ipAddress);
 
         String cityName = response.getCity().getName();
-        String latitude =
-                response.getLocation().getLatitude().toString();
-        String longitude =
-                response.getLocation().getLongitude().toString();
+        String latitude = response.getLocation().getLatitude().toString();
+        String longitude = response.getLocation().getLongitude().toString();
 
-        //TODO- add long/lat/city fields to entry, save info to new entries?  or just save to
-        // separate DAO to display on Google Map over time based on user only
+        Location location = new Location();
+        location.setCity(cityName);
+        location.setLatitude(latitude);
+        location.setLongitude(longitude);
+        location.setUser(user);
+        locationDao.save(location);
 
 
         //find current date

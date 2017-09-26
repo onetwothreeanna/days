@@ -40,6 +40,10 @@ public class User {
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    private List<Location> locations = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
     private List<Bundle> records = new ArrayList<>();
 
     //constructors
@@ -80,4 +84,9 @@ public class User {
     public List<Bundle> getBundles() {   return records;   }
 
     public void setBundles(List<Bundle> records) {   this.records = records;   }
+
+    public List<Location> getLocations() {   return locations;   }
+
+    public void setLocations(List<Location> locations) {   this.locations = locations;   }
+
 }
