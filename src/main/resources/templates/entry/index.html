@@ -31,7 +31,7 @@
             <p data-toggle="tooltip" data-placement="left" title="Hooray!" th:if="${#strings.isEmpty(entry.getEntryText())}">
                 <!--<span id ="blankdate" th:text ="${entry.getDate()}"> </span>-->
                 &nbsp;</p>
-            <p data-toggle="tooltip" data-placement="left" title="${entry.getDate()}" th:text="${entry.getEntryText()}">
+            <p data-toggle="tooltip" data-placement="left" th:title="${entry.getDate()}" th:text="${entry.getEntryText()}">
                 <span id ="date" th:text ="${entry.getDate()}"></span>
              </p>
         </ul>
