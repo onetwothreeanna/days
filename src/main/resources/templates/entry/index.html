@@ -9,11 +9,11 @@
     <nav th:replace="fragments :: navigation"></nav>
 
 
-    <p th:unless="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
+    <p th:if="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
 
     <div class="entries">
 
-        <form th:if="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
+        <form th:unless="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
 
             <div class="form-group">
                 <label th:for="entryText">Entry</label>
@@ -22,11 +22,18 @@
             </div>
 
 
-            <input type="submit" value="add entryText" />
+            <input type="submit" value="add entry" />
         </form>
+
+        <br/>
+        <br/>
         <ul th:each="entry : ${entries}">
-            <p th:if="${#strings.isEmpty(entry.getEntryText())}">&nbsp;</p>
-            <p th:text="${entry.getEntryText()}"></p>
+            <p data-toggle="tooltip" data-placement="left" title="Hooray!" th:if="${#strings.isEmpty(entry.getEntryText())}">
+                <!--<span id ="blankdate" th:text ="${entry.getDate()}"> </span>-->
+                &nbsp;</p>
+            <p data-toggle="tooltip" data-placement="left" title="${entry.getDate()}" th:text="${entry.getEntryText()}">
+                <span id ="date" th:text ="${entry.getDate()}"></span>
+             </p>
         </ul>
     </div>
 </div>
