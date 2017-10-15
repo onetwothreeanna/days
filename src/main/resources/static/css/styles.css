@@ -9,6 +9,11 @@
 body {
 	line-height: 1;
 }
+
+.body {
+	background-color: #0d0d26;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -20,11 +25,10 @@ table {
 
 span{
     color: #4bdca3;
-    font-size: 140px;
+    font-size: 14px;
 }
 
 .caption{
-    text-align: center;
     font-size: 12px;
 }
 
@@ -38,29 +42,27 @@ img{
 
 .page{
     font-family: Helvetica;
-    font-size: 18px;
-    margin:100px;
+    margin:200px;
 }
 
 .entries{
     margin-top: 40px;
-    text-align: center;
-    color: navy;
+    color: pink;
+    font-size: 16px;
 
 }
 
 .archive{
     margin-top: 40px;
-    text-align: center;
     color: #3eb149;
 }
 
 
-h1{
+#daysheader{
     font-family: Helvetica;
-    font-size: 70px;
+    font-size: 200px;
     text-align: center;
-    color: #3eb149;
+    color: #6d4e00;
     margin-top: 200px;
 }
 
@@ -122,4 +124,12 @@ nav{
     border-left: 5px solid green;
 }
 
+.bookend {
+    text-align: center;
+    font-size: 24px;
+    color: white;
+}
 
+.jumbotron{
+    background-image: url("https://www.organicfacts.net/wp-content/uploads/2013/05/Banana3-1020x765.jpg");
+}
