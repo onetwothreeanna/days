@@ -187,3 +187,22 @@ nav{
     text-align: center;
 
 }
+
+#enterplus{
+    font-size: 80px;
+    color: #5a0175;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+#enterplus:hover {
+    text-decoration: none;
+    color: #9ea311;
+}
+
+#enter{
+    color: #9ea311;
+    font-size: 18px;
+    font-family: Andale Mono;
+}

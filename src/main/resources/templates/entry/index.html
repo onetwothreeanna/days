@@ -14,27 +14,31 @@
 
     <nav th:replace="fragments :: navigation"></nav>
 
-        <br/>
-    <p class="seeyoutomorrow" th:if="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
+    <p class="seeyoutomorrow" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
 
-    <div class="entries">
-        <div class="col-md-12">
+    <div class="entriesform">
+        <a href="#enter" id="enterplus" data-toggle="collapse">+</a>
 
-        <form th:unless="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
-
+        <form id="enter" class="collapse" method="post" th:object="${entry}">
+            <!--<form th:if="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">-->
             <div class="form-group" >
                 <label th:for="entryText">Entry</label>
                 <input class="form-control" th:field="*{entryText}" />
                 <span th:errors="*{entryText}" class="error"></span>
             </div>
-
-
-            <input type="submit" value="add entry" />
+            <input type="submit" value="add" />
         </form>
+    </div>
+
+    <div class="entries">
+        <div class="col-md-12">
+
         </div>
         <br/>
         <br/>
+        <br/>
         <p class="bookend">_________________________________</p>
+        <br/>
         <br/>
         <ul th:each="entry : ${entries}">
             <p class="tooltiptext" data-toggle="tooltip" data-placement="left" th:title="${entry.getDate()}"
