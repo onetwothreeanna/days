@@ -44,13 +44,14 @@ img{
     font-family: Helvetica;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 500px;
     width: 800px;
 }
 
 .entries{
     margin-top: 10px;
     margin: auto;
-    color: #81699b;
+    color: #bfb3cc;
     font-size: 18px;
     font-family: Andale Mono;
 
@@ -68,6 +69,9 @@ img{
     text-align: center;
     color: #9ea311;
     margin-top: 200px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .mint{
@@ -100,7 +104,7 @@ a{
 }
 
 a:hover{
-    color:#3eb149;
+    text-decoration: none;
 }
 
 nav{
@@ -121,7 +125,7 @@ nav{
 
 .tooltiptext + .tooltip > .tooltip-inner  {
     background-color: #2e3156;
-    color: #81699b;
+    color: #bfb3cc;
     font-size: 12px;
     font-family: Andale Mono;
 }
@@ -142,3 +146,6 @@ nav{
   align-items:center;
   background:url("/images/days-header.png") center center;
   background-size:cover;
+
+}
+
