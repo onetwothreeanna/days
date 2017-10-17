@@ -81,7 +81,7 @@ public class EntryController {
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
         if(errors.hasErrors()){
             model.addAttribute("title", "days");
-            model.addAttribute("entries", entryDao.findByUserId(user.getId()));
+            model.addAttribute("entries", entryDao.findByUserIdOrderByIdDesc(user.getId()));
             model.addAttribute(newEntry);
             return "entry/index";
         }

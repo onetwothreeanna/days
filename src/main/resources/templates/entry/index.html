@@ -13,14 +13,11 @@
 <div class="page">
 
     <nav th:replace="fragments :: navigation"></nav>
-
-    <p class="seeyoutomorrow" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
+    <p class="seeyoutomorrow col-md-12" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
 
     <div class="entriesform">
-        <a href="#enter" id="enterplus" data-toggle="collapse">+</a>
-
-        <form id="enter" class="collapse" method="post" th:object="${entry}">
-            <!--<form th:if="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">-->
+        <a href="#enter" id="enterplus" data-toggle="collapse" th:unless="${todayEntry} and ${todayEntry.size()}">+</a>
+         <form id="enter" class="collapse" th:unless="${todayEntry} and ${todayEntry.size()}" method="post" th:object="${entry}">
             <div class="form-group" >
                 <label th:for="entryText">Entry</label>
                 <input class="form-control" th:field="*{entryText}" />

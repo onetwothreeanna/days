@@ -155,7 +155,7 @@ a:hover{
 nav{
     margin-left: auto;
     margin-right: auto;
-    font-style: Helvetica;
+    font-style: Andale mono;
     font-size: 16px;
     color: #6d4e00;
 }
@@ -180,7 +180,7 @@ nav{
 }
 
 .seeyoutomorrow {
-    margin-top: 150px;
+    margin-top: 50px;
     font-style: Helvetica;
     font-size: 30px;
     color: #03af8d;
