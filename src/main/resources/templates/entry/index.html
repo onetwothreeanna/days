@@ -14,8 +14,8 @@
 
     <nav th:replace="fragments :: navigation"></nav>
 
-
-    <p th:if="${todayEntry} and ${todayEntry.size()}">See you for tomorrow's post :)</p>
+        <br/>
+    <p class="seeyoutomorrow" th:if="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
 
     <div class="entries">
         <div class="col-md-12">
@@ -34,7 +34,7 @@
         </div>
         <br/>
         <br/>
-        <p class="bookend">...</p>
+        <p class="bookend">_________________________________</p>
         <br/>
         <ul th:each="entry : ${entries}">
             <p class="tooltiptext" data-toggle="tooltip" data-placement="left" th:title="${entry.getDate()}"

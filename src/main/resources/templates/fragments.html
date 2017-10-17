@@ -17,14 +17,25 @@
 <body>
 
 <nav th:fragment="navigation">
-    <ul>
-        <a href="/days/">days home</a>  |
-        <a href="/days/archive">archive</a>
+    <span class="pull-right">
 
-        <form action="/user/logout" method="post">
-            <input type="submit" class="logout" value="Logout" />
-        </form>
-    </ul>
+    <div class="dropdown">
+        <img src="/images/orb.png" alt="Trolltunga Norway" width="50" height="50"/>
+        <div class="dropdown-content">
+            <br/>
+            <p> &nbsp;about </p>
+            <a href="/days/archive"> &nbsp;archive</a>
+            <br/>
+            <br/>
+            <p> &nbsp;user </p>
+            <form action="/user/logout" method="post">
+                <input type="submit" class="logout" value="Logout" />
+            </form>
+        </div>
+    </div>
+
+    </span>
+
 </nav>
 
 </body>
