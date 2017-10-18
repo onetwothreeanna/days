@@ -2,16 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head"></head>
 
-<body>
-<div class="page">
-    <nav th:replace="fragments :: navigation"></nav>
-    <div class="entries">
-        <ul th:each="line : ${bundles}">
-
-            <p th:utext="${#strings.substring(line,11)}"></p>
-
-        </ul>
+<body class="body">
+    <div class="jumbotron">
+        <a class="col-md-12" href="/days/"><h1 id="daysheader">days</h1></a>
     </div>
-</div>
+
+    <div class="container">
+        <div class="page">
+            <nav th:replace="fragments :: navigation"></nav>
+            <div class="entries">
+                <ul th:each="line : ${bundles}">
+
+                    <p th:utext="${#strings.substring(line,11)}"></p>
+
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -3,8 +3,10 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-
-
-function initMap() {
-    document.getElementById("date").innerHTML = "THIS SHOULD BE A MAP YA IDIOT";
+function validateForm() {
+    var x = document.forms["entryForm"]["entryText"].value;
+    if (x == "" || x.length < 3 || x.length > 300) {
+        alert("Fill it out, MANG");
+        return false;
+    }
 }
