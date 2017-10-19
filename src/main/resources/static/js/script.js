@@ -6,7 +6,7 @@ $(document).ready(function(){
 function validateForm() {
     var x = document.forms["entryForm"]["entryText"].value;
     if (x == "" || x.length < 3 || x.length > 300) {
-        alert("Fill it out, MANG");
+        $("#formAlert").slideDown(400);
         return false;
     }
 }
