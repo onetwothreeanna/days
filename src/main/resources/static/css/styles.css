@@ -206,3 +206,8 @@ nav{
     font-size: 18px;
     font-family: Andale Mono;
 }
+
+#formAlert {
+    color: #03af8d;
+    font-size: 14px;
+}
