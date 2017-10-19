@@ -13,9 +13,15 @@
             <div class="entries">
                 <ul th:each="line : ${bundles}">
 
-                    <p th:utext="${#strings.substring(line,11)}"></p>
+                    <p class="tooltiptext" data-toggle="tooltip"
+                       data-placement="left"
+                       th:utext="${#strings.substring(line,11)}"
+                       th:title="${#strings.substring(line,0,10)}"></p>
 
                 </ul>
+
+
+
             </div>
         </div>
     </div>

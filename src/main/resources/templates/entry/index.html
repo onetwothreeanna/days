@@ -5,6 +5,7 @@
 
 <body class = "body">
 
+<!--Header in jumbotron - links to home.-->
 <div class="jumbotron">
     <a class="col-md-12" href="/days/"><h1 id="daysheader">days</h1></a>
 </div>
@@ -16,6 +17,7 @@
 
     <p class="seeyoutomorrow col-md-12" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
 
+    <!--entries form-->
     <div class="entriesform">
         <a href="#enter" id="enterplus" data-toggle="collapse"
            th:if="${todayEntry} and ${todayEntry.size()}">+</a>
@@ -43,6 +45,7 @@
 
     </div>
 
+    <!--entries-->
     <div class="entries">
         <div class="col-md-12">
 
@@ -59,15 +62,12 @@
                 &nbsp;
             </p>
 
+            <!--date tooltips-->
             <p class="tooltiptext" data-toggle="tooltip" data-placement="left" th:title="${entry.getDate()}"
                th:text="${entry.getEntryText()}">
             </p>
 
         </ul>
-
-        <div class="tooltip">Hover over me
-            <span class="tooltiptext">Tooltip text</span>
-        </div>
 
         <br/>
         <br/>
