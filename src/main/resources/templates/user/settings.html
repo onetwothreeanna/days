@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<div class="page">
+    <h1 th:text="${title}">User Settings</h1>
+
+    <form method="post">
+        <input type="radio" name="galaxyview" value="true"/> Yes <br/>
+        <input type="radio" name="galaxyview" value="false"/> No <br/>
+
+
+        <input class="button" type="submit" value="go" /> <br/>
+    </form>
+
+    <p th:text="${savedpref}"></p>
+
+</div>
+</body>
+</html>

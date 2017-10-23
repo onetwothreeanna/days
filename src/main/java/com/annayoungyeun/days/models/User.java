@@ -34,17 +34,20 @@ public class User {
     @Transient
     private String verify;
 
+    private String prefs = "1 1";
+
     @OneToMany
     @JoinColumn(name = "user_id")
     private List<Entry> entries = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "user_id")
-    private List<Location> locations = new ArrayList<>();
-
-    @OneToMany
-    @JoinColumn(name = "user_id")
     private List<Bundle> records = new ArrayList<>();
+//
+//    @OneToMany
+//    @JoinColumn(name = "user_id")
+//    private List<UserPref> userPrefs = new ArrayList<>();
+
 
     //constructors
     public User(String username, String email, String password) {
@@ -85,8 +88,11 @@ public class User {
 
     public void setBundles(List<Bundle> records) {   this.records = records;   }
 
-    public List<Location> getLocations() {   return locations;   }
+//    public List<UserPref> getUserPrefs() {   return userPrefs;   }
+//
+//    public void setUserPrefs(List<UserPref> userPrefs) {   this.userPrefs = userPrefs;   }
 
-    public void setLocations(List<Location> locations) {   this.locations = locations;   }
+    public String getPrefs() {   return prefs;      }
 
+    public void setPrefs(String prefs) {        this.prefs = prefs;         }
 }

@@ -156,22 +156,23 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+
+
     //---------------------------preferences handling-------------------------------
-    @RequestMapping(value = "preferences", method = RequestMethod.GET)
+    @RequestMapping(value = "settings", method = RequestMethod.GET)
     public String preferences(Model model) {
         model.addAttribute("title", "days User Preferences");
-        return "user/preferences";
+        return "user/settings";
     }
 
-    @RequestMapping(value = "preferences", params="color", method = RequestMethod.POST)
-    public String preferences(@RequestParam("color") String color, Model model){
-        Preferences pref = Preferences.userRoot();
-        String initColor = pref.get("color", "Blue");
-        pref.put("color", color);
-        System.out.println(pref.get(color, color));
+    @RequestMapping(value = "settings", params="galaxyview", method = RequestMethod.POST)
+    public String preferences(@RequestParam("galaxyview") Boolean galaxyview, HttpServletRequest request,Model model){
+
+        User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
 
         model.addAttribute("title", "days User Preferences");
-        return "redirect:/days";
+        model.addAttribute("savedpref", galaxyview);
+        return "user/settings";
     }
 
 }
