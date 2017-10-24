@@ -1,6 +1,7 @@
 package com.annayoungyeun.days.controllers;
 
 import com.annayoungyeun.days.models.Login;
+import com.annayoungyeun.days.models.SettingsForm;
 import com.annayoungyeun.days.models.User;
 import com.annayoungyeun.days.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +63,7 @@ public class UserController {
         }
 
         if (passwordsMatch) {
+            user.setPrefs("11");
             userDao.save(user);
             return "user/index";
         }
@@ -160,19 +159,48 @@ public class UserController {
 
     //---------------------------preferences handling-------------------------------
     @RequestMapping(value = "settings", method = RequestMethod.GET)
-    public String preferences(Model model) {
-        model.addAttribute("title", "days User Preferences");
+    public String settings(Model model, HttpServletRequest request) {
+
+        User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
+        String[] prefs = user.getPrefs().split(" ");
+        String theme = prefs[0];
+        String notifications = prefs[1];
+        SettingsForm settingsForm = new SettingsForm();
+        settingsForm.setNotifications(notifications);
+        settingsForm.setTheme(theme);
+
+        model.addAttribute("title", "days User Settings");
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("theme", theme);
+        model.addAttribute("notifications", notifications);
+        model.addAttribute(settingsForm);
+
         return "user/settings";
     }
 
-    @RequestMapping(value = "settings", params="galaxyview", method = RequestMethod.POST)
-    public String preferences(@RequestParam("galaxyview") Boolean galaxyview, HttpServletRequest request,Model model){
+    @RequestMapping(value = "settings", method = RequestMethod.POST)
+    public String settings(@ModelAttribute @Valid SettingsForm settingsForm, Errors errors, Model model,
+                        HttpServletRequest request) {
+        if (errors.hasErrors()){
+            model.addAttribute("title", "days User Settings");
+            model.addAttribute(settingsForm);
+            return "user/settings";
+        }
 
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
+        String userPrefs = settingsForm.getTheme() + " " + settingsForm.getNotifications();
+        user.setEmail(settingsForm.getEmail());
+        user.setPrefs(userPrefs);
+        user.setVerify("grapes");
+        userDao.save(user);
 
         model.addAttribute("title", "days User Preferences");
-        model.addAttribute("savedpref", galaxyview);
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("theme", settingsForm.getTheme());
+        model.addAttribute("notifications", settingsForm.getNotifications());
+
         return "user/settings";
+
     }
 
 }

@@ -6,15 +6,33 @@
 <div class="page">
     <h1 th:text="${title}">User Settings</h1>
 
-    <form method="post">
-        <input type="radio" name="galaxyview" value="true"/> Yes <br/>
-        <input type="radio" name="galaxyview" value="false"/> No <br/>
+    <form method = "post" th:object="${settingsForm}" >
+        <h3>Theme</h3>
 
+        <input type="radio" th:field="*{theme}" th:value="Galaxy" name="Galaxy" /> Galaxy
+            <br/>
+            <input type="radio" th:field="*{theme}" th:value="Daytime" name="Daytime" /> Daytime
 
-        <input class="button" type="submit" value="go" /> <br/>
+            <span th:errors="*{theme}" class="error"></span> <br /><br />
+
+        <h3>Notifications</h3>
+
+        <input type="radio" th:field="*{notifications}" th:value="On" name="On"/> On
+        <br/>
+        <input type="radio" th:field="*{notifications}" th:value="Off" name="Off" /> Off
+
+        <span th:errors="*{notifications}" class="error"></span> <br /><br />
+
+        <h3>Update E-mail</h3>
+        <input type="email" th:value="${email}" name="email" />
+
+        <span th:errors="*{email}" class="error"></span> <br /><br />
+
+        <input class="button" type="submit" value="Save" /> <br />
     </form>
 
-    <p th:text="${savedpref}"></p>
+
+    <p th:text="${savedPrefs}"></p>
 
 </div>
 </body>
