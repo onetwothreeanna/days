@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import java.util.prefs.*;
 
 @Controller
 @RequestMapping("user")
@@ -30,7 +29,11 @@ public class UserController {
     //---------------------------user sign up ------------------------------
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String add(Model model) {
+    public String add(Model model, HttpServletRequest request) {
+        
+        if(request.getSession().getAttribute("currentUser") != null){
+            return "redirect:/days";
+        }
         model.addAttribute(new User());
         model.addAttribute("title", "days");
         return "user/add";
@@ -41,7 +44,7 @@ public class UserController {
 
         User userAlreadyExists = userDao.findByUsername(user.getUsername());
         if(userAlreadyExists != null){
-            model.addAttribute("title", "days Register");
+            model.addAttribute("title", "days");
             model.addAttribute("usernameError", "Username not available.");
             model.addAttribute(user);
             return "user/add";
@@ -75,10 +78,16 @@ public class UserController {
     //---------------------------login handling ------------------------------
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login(Model model) {
-        model.addAttribute(new Login());
-        model.addAttribute("title", "days Login");
-        return "user/login";
+    public String login(Model model, HttpServletRequest request) {
+
+        if(request.getSession().getAttribute("currentUser") != null){
+            return "redirect:/days";
+        }
+        else {
+            model.addAttribute(new Login());
+            model.addAttribute("title", "days Login");
+            return "user/login";
+        }
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
