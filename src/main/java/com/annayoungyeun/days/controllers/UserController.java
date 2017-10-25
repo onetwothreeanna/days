@@ -30,7 +30,7 @@ public class UserController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model, HttpServletRequest request) {
-        
+
         if(request.getSession().getAttribute("currentUser") != null){
             return "redirect:/days";
         }
