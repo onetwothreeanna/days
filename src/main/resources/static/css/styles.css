@@ -208,21 +208,19 @@ h3{
 }
 
 h1{
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Helvetica;
+    margin-top: 100px;
+    font-family: Andale mono;
     font-size: 70px;
     color: #5a0175;
     text-align: center;
 }
 
-
 .form {
     margin-top: 30px;
+    position: absolute;
+    text-alignment: center;
     color: #9ea311;
     font-size: 14px;
     font-family: Andale Mono;
-    margin-left: auto;
-    margin-right: auto;
+
 }
