@@ -3,7 +3,29 @@
    License: none (public domain)
 */
 
+
+.mint{
+    color: #03af8d;
 }
+.orange{
+    color: #af4803;
+}
+.kellygreen{
+    color: #02af11;
+}
+.navy{
+    color: #000547;
+}
+.purple{
+    color: #5a0175;
+}
+.burgundy{
+    color: #6d0026;
+}
+.mustard{
+    color: #6d4e00;
+}
+
 /* HTML5 display-role reset for older browsers */
 
 body {
@@ -74,29 +96,6 @@ img{
     margin-right: auto;
 }
 
-.mint{
-    color: #03af8d;
-}
-.orange{
-    color: #af4803;
-}
-.kellygreen{
-    color: #02af11;
-}
-.navy{
-    color: #000547;
-}
-.purple{
-    color: #5a0175;
-}
-.burgundy{
-    color: #6d0026;
-}
-.mustard{
-    color: #6d4e00;
-}
-
-
 
 a{
     text-decoration:none;
@@ -105,15 +104,6 @@ a{
 
 a:hover{
     text-decoration: none;
-}
-
-
-#map {
-    width: 100%;
-    padding: 50px 0;
-    text-align: center;
-    background-color: lightblue;
-    margin-top: 20px;
 }
 
 
@@ -181,7 +171,6 @@ nav.a{
 
 .seeyoutomorrow {
     margin-top: 50px;
-    font-style: Helvetica;
     font-size: 30px;
     color: #03af8d;
     text-align: center;
@@ -210,4 +199,28 @@ nav.a{
 #formAlert {
     color: #03af8d;
     font-size: 14px;
+}
+
+h3{
+    font-family: Andale mono;
+    color: #02af11;
+    font-size: 18px;
+}
+
+h1{
+    margin-top: 100px;
+    font-family: Andale mono;
+    font-size: 70px;
+    color: #5a0175;
+    text-align: center;
+}
+
+.form {
+    margin-top: 30px;
+    position: absolute;
+    text-alignment: center;
+    color: #9ea311;
+    font-size: 14px;
+    font-family: Andale Mono;
+
 }
