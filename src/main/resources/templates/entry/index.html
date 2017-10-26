@@ -20,29 +20,32 @@
 
 
     <!--entries form-->
-    <a href="#enter" id="enterplus" data-toggle="collapse"
-       th:if="${todayEntry} and ${todayEntry.size()}">+</a>
+    <div class="entriesform">
+        <a href="#enter" id="enterplus" data-toggle="collapse"
+           th:unless="${todayEntry} and ${todayEntry.size()}">+</a>
 
-     <form id="enter" class="collapse" name="entryForm"
-            th:if="${todayEntry} and ${todayEntry.size()}"
-            method="post" th:object="${entry}"
-            onsubmit="return validateForm()">
+         <form id="enter" class="collapse" name="entryForm"
+                th:unless="${todayEntry} and ${todayEntry.size()}"
+                method="post" th:object="${entry}"
+                onsubmit="return validateForm()">
 
-        <div class="form-group" >
-            <label th:for="entryText">Entry</label>
-            <input name="entryText" class="form-control" th:field="*{entryText}" />
-            <span th:errors="*{entryText}" class="error"></span>
-        </div>
+            <div class="form-group" >
+                <label th:for="entryText">Entry</label>
+                <input name="entryText" class="form-control" th:field="*{entryText}" />
+                <span th:errors="*{entryText}" class="error"></span>
+            </div>
 
-         <div id="formAlert" class="collapse">
-             <a class="close">×</a>
-             <p>Entries must be 3 to 300 characters.</p>
-         </div>
+             <div id="formAlert" class="collapse">
+                 <a class="close">×</a>
+                 <p>Entries must be 3 to 300 characters.</p>
+             </div>
 
-        <input type="submit" value="add" />
+            <input type="submit" value="add" />
 
-    </form>
+        </form>
 
+
+    </div>
 
     <!--entries-->
     <div class="entries">

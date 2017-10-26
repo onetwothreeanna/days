@@ -63,7 +63,7 @@ public class UserController {
         }
 
         if (passwordsMatch) {
-            user.setPrefs("Galaxy On");
+            user.setPrefs("11");
             userDao.save(user);
             return "user/index";
         }
