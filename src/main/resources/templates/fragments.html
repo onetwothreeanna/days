@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
-    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link th:if="${#strings.contains(userPref, 'Galaxy')}" rel="stylesheet" th:href="@{/css/galaxy.css}"/>
+    <link th:if="${#strings.contains(userPref, 'Daytime')}" rel="stylesheet" th:href="@{/css/daytime.css}"/>
+
 
 
 
@@ -20,7 +22,6 @@
     <span class="pull-right">
 
     <div class="dropdown">
-        <img src="/images/orb.png" alt="Trolltunga Norway" width="50" height="50"/>
         <div class="dropdown-content">
             <br/>
             <p> &nbsp;about </p>

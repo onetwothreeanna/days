@@ -31,6 +31,7 @@ public class UserController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
+
         model.addAttribute(new User());
         model.addAttribute("title", "days");
         return "user/add";
@@ -169,10 +170,12 @@ public class UserController {
         settingsForm.setNotifications(notifications);
         settingsForm.setTheme(theme);
 
+        String userPref = user.getPrefs();
         model.addAttribute("title", "days User Settings");
         model.addAttribute("email", user.getEmail());
         model.addAttribute("theme", theme);
         model.addAttribute("notifications", notifications);
+        model.addAttribute("userPref", userPref);
         model.addAttribute(settingsForm);
 
         return "user/settings";
@@ -198,6 +201,7 @@ public class UserController {
         model.addAttribute("email", user.getEmail());
         model.addAttribute("theme", settingsForm.getTheme());
         model.addAttribute("notifications", settingsForm.getNotifications());
+        model.addAttribute("userPrefs", userPrefs);
 
         return "user/settings";
 

@@ -30,10 +30,15 @@ public class EntryController {
     @Autowired
     private UserDao userDao;
 
+
     //main page - add an item, view this year's journal
     @RequestMapping(value="", method = RequestMethod.GET)
     public String addEntry(Model model, HttpServletRequest request){
         //current user
+
+        User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
+        String userPref = user.getPrefs();
+
         int currentUserId = userDao.findByUsername(
         request.getSession().getAttribute("currentUser").toString()).getId();
 
@@ -49,6 +54,7 @@ public class EntryController {
         model.addAttribute("todayEntry", todayEntry);
         model.addAttribute("title", "days");
         model.addAttribute("entries", entryDao.findByUserIdOrderByIdDesc(currentUserId));
+        model.addAttribute("userPref", userPref);
         model.addAttribute(new Entry());
         return "entry/index";
     }
@@ -59,10 +65,12 @@ public class EntryController {
 
         //error handling
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
+        String userPref = user.getPrefs();
         if(errors.hasErrors()){
             model.addAttribute("title", "days");
             model.addAttribute("entries", entryDao.findByUserIdOrderByIdDesc(user.getId()));
             model.addAttribute(newEntry);
+            model.addAttribute("userPref", userPref);
             return "entry/index";
         }
 
