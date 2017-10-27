@@ -203,7 +203,7 @@ public class UserController {
         model.addAttribute("notifications", settingsForm.getNotifications());
         model.addAttribute("userPrefs", userPrefs);
 
-        return "user/settings";
+        return "redirect:/user/settings";
 
     }
 

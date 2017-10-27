@@ -1,0 +1,226 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+.mint{
+    color: #03af8d;
+}
+.orange{
+    color: #af4803;
+}
+.kellygreen{
+    color: #02af11;
+}
+.navy{
+    color: #000547;
+}
+.purple{
+    color: #5a0175;
+}
+.burgundy{
+    color: #6d0026;
+}
+.mustard{
+    color: #6d4e00;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+body {
+	line-height: 1;
+}
+
+.body {
+	background-color: #b0e1d9;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+span{
+    color: #4bdca3;
+    font-size: 14px;
+}
+
+.caption{
+    font-size: 12px;
+}
+
+img{
+    display: block;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.page{
+    font-family: Helvetica;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 500px;
+    width: 800px;
+}
+
+.entries{
+    margin-top: 10px;
+    margin: auto;
+    color: #bfb3cc;
+    font-size: 18px;
+    font-family: Andale Mono;
+
+}
+
+.archive{
+    margin-top: 40px;
+    color: #3eb149;
+}
+
+
+#daysheader{
+    font-family: Helvetica;
+    font-size: 200px;
+    text-align: center;
+    color: #9ea311;
+    margin-top: 200px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+a{
+    text-decoration:none;
+    color:grey;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+
+.tooltiptext + .tooltip > .tooltip-inner  {
+    background-color: #2e3156;
+    color: #bfb3cc;
+    font-size: 12px;
+    font-family: Andale Mono;
+}
+
+.tooltiptext + .tooltip.left > .tooltip-arrow {
+    border-left: 5px solid #2e3156;
+}
+
+.bookend {
+    text-align: center;
+    font-size: 12px;
+    color: #3f0f51;
+}
+
+.jumbotron{
+  height:700px;
+  display:flex;
+  align-items:center;
+  background:url("/images/DaytimeHeader.png") center center;
+  background-size:cover;
+
+}
+
+.logout {
+    display: inline;
+    background: #0d0d26;
+    border: none;
+    color: #778899;
+    cursor: pointer;
+}
+
+
+nav.a{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0d0d26;
+    min-width: 160px;
+    z-index: 1;
+    font-family: Andale mono;
+    font-size: 16px;
+    color: #6d4e00;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.seeyoutomorrow {
+    margin-top: 50px;
+    font-size: 30px;
+    color: #03af8d;
+    text-align: center;
+
+}
+
+#enterplus{
+    font-size: 80px;
+    color: #5a0175;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+#enterplus:hover {
+    text-decoration: none;
+    color: #9ea311;
+}
+
+#enter{
+    color: #9ea311;
+    font-size: 18px;
+    font-family: Andale Mono;
+}
+
+#formAlert {
+    color: #03af8d;
+    font-size: 14px;
+}
+
+h3{
+    font-family: Andale mono;
+    color: #02af11;
+    font-size: 18px;
+}
+
+h1{
+    margin-top: 100px;
+    font-family: Andale mono;
+    font-size: 70px;
+    color: #5a0175;
+    text-align: center;
+}
+
+.form {
+    margin-top: 30px;
+    position: absolute;
+    text-alignment: center;
+    color: #9ea311;
+    font-size: 14px;
+    font-family: Andale Mono;
+
+}
