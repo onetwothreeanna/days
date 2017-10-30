@@ -74,7 +74,7 @@ img{
     margin-top: 10px;
     margin: auto;
     color: #bfb3cc;
-    font-size: 18px;
+    font-size: 16px;
     font-family: Andale Mono;
 
 }
@@ -141,10 +141,14 @@ a:hover{
     cursor: pointer;
 }
 
+nav{
+    min-width: 160px;
+}
 
 nav.a{
     margin-left: auto;
     margin-right: auto;
+
 }
 
 
@@ -203,7 +207,7 @@ nav.a{
 
 h3{
     font-family: Andale mono;
-    color: #02af11;
+    color: #03af8d;
     font-size: 18px;
 }
 
@@ -211,7 +215,7 @@ h1{
     margin-top: 100px;
     font-family: Andale mono;
     font-size: 70px;
-    color: #5a0175;
+    color: #03af8d;
     text-align: center;
 }
 

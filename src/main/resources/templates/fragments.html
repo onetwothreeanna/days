@@ -22,12 +22,15 @@
     <span class="pull-right">
 
     <div class="dropdown">
+        <img th:if="${#strings.contains(userPref, 'Galaxy')}" src="/images/orb.png" alt="orb menu" width="50" height="50"/>
+        <img th:if="${#strings.contains(userPref, 'Daytime')}" src="/images/daytimeorb.png" alt="orb menu" width="50" height="50"/>
+
         <div class="dropdown-content">
             <br/>
             <p> &nbsp;about </p>
             <a href="/days/archive"> &nbsp;archive</a>
             <br/>
-            <br/>4
+            <br/>
             <a href="/user/settings"> &nbsp;settings</a>
             <br/>
             <br/>

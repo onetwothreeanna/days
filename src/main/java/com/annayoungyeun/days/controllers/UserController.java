@@ -34,6 +34,7 @@ public class UserController {
 
         model.addAttribute(new User());
         model.addAttribute("title", "days");
+        model.addAttribute("userPref", "");
         return "user/add";
     }
 
@@ -44,12 +45,14 @@ public class UserController {
         if(userAlreadyExists != null){
             model.addAttribute("title", "days Register");
             model.addAttribute("usernameError", "Username not available.");
+            model.addAttribute("userPref", "");
             model.addAttribute(user);
             return "user/add";
         }
 
         if (errors.hasErrors()){
             model.addAttribute("title", "days Register");
+            model.addAttribute("userPref", "");
             model.addAttribute(user);
             return "user/add";
 
@@ -61,11 +64,14 @@ public class UserController {
                 || !user.getPassword().equals(verify)) {
             passwordsMatch = false;
             model.addAttribute("verifyError", "Passwords must match");
+            model.addAttribute("userPref", "");
+
         }
 
         if (passwordsMatch) {
-            user.setPrefs("11");
+            user.setPrefs("Galaxy On");
             userDao.save(user);
+            model.addAttribute("userPref", "");
             return "user/index";
         }
         return "user/add";
@@ -79,6 +85,7 @@ public class UserController {
     public String login(Model model) {
         model.addAttribute(new Login());
         model.addAttribute("title", "days Login");
+        model.addAttribute("userPref", "");
         return "user/login";
     }
 
@@ -88,6 +95,7 @@ public class UserController {
         if (errors.hasErrors()){
             model.addAttribute("title", "days Login");
             model.addAttribute(loginAttempt);
+            model.addAttribute("userPref", "");
             return "user/login";
         }
 
@@ -104,12 +112,15 @@ public class UserController {
                 boolean passwordsMatch = user.getPassword().equals(loginAttempt.getPassword());
                 if (!passwordsMatch) {
                     model.addAttribute("verifyError", "Username or password is incorrect.");
+                    model.addAttribute("userPref", "");
                 }
 
                 if (passwordsMatch) {
                     Cookie userCookie = new Cookie("user", user.getUsername());
                     userCookie.setPath("/");
                     response.addCookie(userCookie);
+                    model.addAttribute("userPref", "");
+
                     return "/user/index";
                 }
             }
@@ -118,6 +129,8 @@ public class UserController {
         //if not there, show login form again with error.
         model.addAttribute("title", "days Login");
         model.addAttribute("verifyError", "Username or password is incorrect.");
+        model.addAttribute("userPref", "");
+
         return "user/login";
 
     }
@@ -129,6 +142,7 @@ public class UserController {
     public String logout(Model model) {
         model.addAttribute(new Login());
         model.addAttribute("title", "days Logout");
+        model.addAttribute("userPref", "");
         return "user/logout";
     }
     @RequestMapping(value="logout", method = RequestMethod.POST)
@@ -149,10 +163,14 @@ public class UserController {
             userCookie.setPath("/");
             response.addCookie(userCookie);
             model.addAttribute("logoutMessage", "You have been logged out.");
+            model.addAttribute("userPref", "");
+
             return "user/logout";
 
         }
         model.addAttribute("title", "days Login");
+        model.addAttribute("userPref", "");
+
         return "redirect:/user/login";
     }
 
@@ -191,9 +209,9 @@ public class UserController {
         }
 
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
-        String userPrefs = settingsForm.getTheme() + " " + settingsForm.getNotifications();
+        String userPref = settingsForm.getTheme() + " " + settingsForm.getNotifications();
         user.setEmail(settingsForm.getEmail());
-        user.setPrefs(userPrefs);
+        user.setPrefs(userPref);
         user.setVerify("grapes");
         userDao.save(user);
 
@@ -201,9 +219,9 @@ public class UserController {
         model.addAttribute("email", user.getEmail());
         model.addAttribute("theme", settingsForm.getTheme());
         model.addAttribute("notifications", settingsForm.getNotifications());
-        model.addAttribute("userPrefs", userPrefs);
+        model.addAttribute("userPref", userPref);
 
-        return "redirect:/user/settings";
+        return "user/settings";
 
     }
 

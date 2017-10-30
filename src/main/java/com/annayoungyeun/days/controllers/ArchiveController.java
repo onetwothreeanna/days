@@ -27,7 +27,7 @@ public class ArchiveController {
     @RequestMapping(value = "/archive", method = RequestMethod.GET)
     public String viewArchive(Model model, HttpServletRequest request) {
         User user = userDao.findByUsername(request.getSession().getAttribute("currentUser").toString());
-
+        String userPref = user.getPrefs();
         List<Bundle> bundles = bundleDao.findByUserIdOrderByIdDesc(user.getId());
         List<String> bundleStrings = new ArrayList<>();
         //split bundles into a list of strings to pass into the view & separate date
@@ -38,6 +38,7 @@ public class ArchiveController {
             }
         }
         model.addAttribute("bundles", bundleStrings);
+        model.addAttribute("userPref", userPref);
 
         return "archive/archive";
 

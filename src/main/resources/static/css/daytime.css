@@ -73,8 +73,8 @@ img{
 .entries{
     margin-top: 10px;
     margin: auto;
-    color: #bfb3cc;
-    font-size: 18px;
+    color: #4e6361;
+    font-size: 16px;
     font-family: Andale Mono;
 
 }
@@ -108,8 +108,8 @@ a:hover{
 
 
 .tooltiptext + .tooltip > .tooltip-inner  {
-    background-color: #2e3156;
-    color: #bfb3cc;
+    background-color: #789995;
+    color: #b0e1d9;
     font-size: 12px;
     font-family: Andale Mono;
 }
@@ -121,7 +121,7 @@ a:hover{
 .bookend {
     text-align: center;
     font-size: 12px;
-    color: #3f0f51;
+    color: grey;
 }
 
 .jumbotron{
@@ -135,7 +135,7 @@ a:hover{
 
 .logout {
     display: inline;
-    background: #0d0d26;
+    background: #b0e1d9;
     border: none;
     color: #778899;
     cursor: pointer;
@@ -152,7 +152,7 @@ nav.a{
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #0d0d26;
+    background-color: #b0e1d9;
     min-width: 160px;
     z-index: 1;
     font-family: Andale mono;
@@ -179,7 +179,7 @@ nav.a{
 
 #enterplus{
     font-size: 80px;
-    color: #5a0175;
+    color: #789995;
     text-decoration: none;
     text-align: center;
 
@@ -187,11 +187,11 @@ nav.a{
 
 #enterplus:hover {
     text-decoration: none;
-    color: #9ea311;
+    color: #93ad9c;
 }
 
 #enter{
-    color: #9ea311;
+    color: #789995;
     font-size: 18px;
     font-family: Andale Mono;
 }
@@ -203,7 +203,7 @@ nav.a{
 
 h3{
     font-family: Andale mono;
-    color: #02af11;
+    color: black;
     font-size: 18px;
 }
 
@@ -211,7 +211,7 @@ h1{
     margin-top: 100px;
     font-family: Andale mono;
     font-size: 70px;
-    color: #5a0175;
+    color:  #789995;
     text-align: center;
 }
 
@@ -219,7 +219,7 @@ h1{
     margin-top: 30px;
     position: absolute;
     text-alignment: center;
-    color: #9ea311;
+    color:  #789995;
     font-size: 14px;
     font-family: Andale Mono;
 
