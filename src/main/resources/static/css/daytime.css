@@ -2,7 +2,10 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+@font-face {
+    font-family: orator;
+    src: url("/css/OratorStd-Slanted.otf");
+}
 
 .mint{
     color: #03af8d;
@@ -73,7 +76,7 @@ img{
 .entries{
     margin-top: 10px;
     margin: auto;
-    color: #4e6361;
+    color: #364745;
     font-size: 16px;
     font-family: Andale Mono;
 
@@ -86,10 +89,10 @@ img{
 
 
 #daysheader{
-    font-family: Helvetica;
+    font-family: orator;
     font-size: 200px;
     text-align: center;
-    color: #9ea311;
+    color: black;
     margin-top: 200px;
     width: auto;
     margin-left: auto;
@@ -187,12 +190,12 @@ nav.a{
 
 #enterplus:hover {
     text-decoration: none;
-    color: #93ad9c;
+    color: black;
 }
 
 #enter{
     color: #789995;
-    font-size: 18px;
+    font-size: 16px;
     font-family: Andale Mono;
 }
 
@@ -202,14 +205,14 @@ nav.a{
 }
 
 h3{
-    font-family: Andale mono;
+    font-family: orator;
     color: black;
     font-size: 18px;
 }
 
 h1{
     margin-top: 100px;
-    font-family: Andale mono;
+    font-family: orator;
     font-size: 70px;
     color:  #789995;
     text-align: center;
