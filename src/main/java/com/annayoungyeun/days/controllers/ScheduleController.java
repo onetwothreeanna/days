@@ -35,8 +35,7 @@ public class ScheduleController {
     @Autowired
     private BundleDao bundleDao;
 
-  //  @Scheduled(fixedDelay = 30000)
-    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+    @Scheduled(cron = "59 23 * * * ?", zone = "CST")
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -78,8 +77,6 @@ public class ScheduleController {
 
     }
 
-    //change to 7 pm
-//      @Scheduled(fixedDelay = 3000)
     @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void notifications() throws MessagingException {
         //List of Users
@@ -96,16 +93,17 @@ public class ScheduleController {
 
         //loop through all users
         for(User user : users){
-            //find if there are entries for today's date
+            //find if there is no todayEntry && if user notifications are On
             List<Entry> todayEntry = entryDao.findByDateAndUserId(date, user.getId());
-            //if there is no entry for the day, save a blank string
-            if(todayEntry.size() > 1){
+            Boolean notifsOn = user.getPrefs().contains("On");
+            //send e-mail if both conditions are true
+            if(todayEntry.size() <1 && notifsOn){
                 //send notification
                 helper.setTo(user.getEmail());
                 helper.setText("Greetings, " + user.getUsername() + "! Remember to add an entry to your Days Journal by 11:59 pm. " +
-                        "\n If you can't get around to it or don't feel like it, no worries! A blank line is automatically " +
+                        "\nIf you can't get around to it or don't feel like it, no worries! A blank line is automatically " +
                         "added to your entries to mark another day passed. " +
-                        "\n\n\n E-mail notifications are sent at 7pm on days you have not yet posted.  " +
+                        "\n\n\nE-mail notifications are sent at 7pm on days you have not yet posted.  " +
                         "To stop these notifications, visit your user settings page.");
                 helper.setSubject("Days: Remember to post");
 
