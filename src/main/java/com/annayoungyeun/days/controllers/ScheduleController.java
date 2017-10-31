@@ -8,9 +8,13 @@ import com.annayoungyeun.days.models.data.EntryDao;
 import com.annayoungyeun.days.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -18,6 +22,9 @@ import java.util.List;
 @SpringBootApplication
 @EnableScheduling
 public class ScheduleController {
+
+    @Autowired
+    private JavaMailSender sender;
 
     @Autowired
     private UserDao userDao;
@@ -70,4 +77,44 @@ public class ScheduleController {
         }
 
     }
+
+    //change to 7 pm
+//      @Scheduled(fixedDelay = 3000)
+    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+    public void notifications() throws MessagingException {
+        //List of Users
+        List<User> users = (List<User>) userDao.findAll();
+
+        //set up email
+        MimeMessage message = sender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        //find today's date and format it
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String date = now.format(formatter);
+
+        //loop through all users
+        for(User user : users){
+            //find if there are entries for today's date
+            List<Entry> todayEntry = entryDao.findByDateAndUserId(date, user.getId());
+            //if there is no entry for the day, save a blank string
+            if(todayEntry.size() > 1){
+                //send notification
+                helper.setTo(user.getEmail());
+                helper.setText("Greetings, " + user.getUsername() + "! Remember to add an entry to your Days Journal by 11:59 pm. " +
+                        "\n If you can't get around to it or don't feel like it, no worries! A blank line is automatically " +
+                        "added to your entries to mark another day passed. " +
+                        "\n\n\n E-mail notifications are sent at 7pm on days you have not yet posted.  " +
+                        "To stop these notifications, visit your user settings page.");
+                helper.setSubject("Days: Remember to post");
+
+                //send message
+                sender.send(message);
+            }
+
+        }
+
+    }
+
 }
