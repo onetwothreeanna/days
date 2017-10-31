@@ -76,8 +76,8 @@ public class ScheduleController {
         }
 
     }
-
-    @Scheduled(cron = "59 23 * * * ?", zone = "CST")  //runs at 11:59pm each day
+//      @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "* 19 * * * ?", zone = "CST")  //runs at 11:59pm each day
     public void notifications() throws MessagingException {
         //List of Users
         List<User> users = (List<User>) userDao.findAll();

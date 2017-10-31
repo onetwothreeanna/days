@@ -82,7 +82,7 @@ public class EntryController {
         newEntry.setDate(date);
         newEntry.setUser(user);
         entryDao.save(newEntry);
-        return "redirect:/days";
+        return "redirect:/days#entries";
     }
 
 

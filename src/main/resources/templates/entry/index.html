@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+</head>
 
 
 <body class = "body">
@@ -12,11 +13,11 @@
 
 <div class="container">
 <div class="page">
+    <p class="seeyoutomorrow col-md-12" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
 
     <nav th:replace="fragments :: navigation"></nav>
 
-    <p class="seeyoutomorrow col-md-12" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
-
+<br/>
 <br/>
 
     <!--entries form-->
@@ -36,7 +37,6 @@
             </div>
 
              <div id="formAlert" class="collapse">
-                 <a class="close">×</a>
                  <p>Entries must be 3 to 300 characters.</p>
              </div>
 
@@ -47,8 +47,21 @@
 
     </div>
 
+    <div th:unless="${todayEntry} and ${todayEntry.size()}">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+
+
     <!--entries-->
-    <div class="entries">
+    <div id="entries" class="entries">
         <div class="col-md-12">
 
         </div>

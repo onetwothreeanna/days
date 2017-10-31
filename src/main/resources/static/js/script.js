@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('html').hide().fadeIn(3000).delay(6000)
+    $('html').hide().fadeIn(3000).delay(3000)
     $('[data-toggle="tooltip"]').tooltip();
 });
 
