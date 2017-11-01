@@ -3,13 +3,13 @@
 <head th:replace="fragments :: head"></head>
 
 
-<body>
+<body class="body">
 <div class="page">
 
     <h1 th:text="${title}">Days</h1>
     <br />
     <br />
-    <form method = "post" th:object="${login}" >
+    <form class="form" method = "post" th:object="${login}" >
         <label th:for="username">Username </label>
         <input type="text" th:field="*{username}" name="username" />
         <span th:errors="*{username}" class="error"></span> <br /><br />

@@ -10,20 +10,20 @@
     <h3>Register</h3>
     <br/>
     <form method = "post" th:object="${user}">
-        <label th:for="username">Username </label>
-        <input th:field="*{username}" name="username" /> <span th:text = "${usernameError}"></span>
+        <label class="form" th:for="username">Username </label>
+        <input type="text" th:field="*{username}" name="username" /> <span th:text = "${usernameError}"></span>
 
         <span th:errors="*{username}" class="error"></span> <br /><br />
 
-        <label th:for="password">Password </label>
+        <label class="form" th:for="password">Password </label>
         <input type="password" th:field="*{password}" name="password" />
         <span th:errors="*{password}" class="error"></span> <br /><br />
 
-        <label th:for="verify">Verify Password </label>
+        <label class="form" th:for="verify">Verify Password </label>
         <input type="password" th:field="*{verify}" name="verify" />
         <span th:errors="*{verify}" class="error"></span> <br /><br />
 
-        <label th:for="email">Email </label>
+        <label class="form" th:for="email">Email </label>
         <input type="email" th:field="*{email}" name="email" />
         <span th:errors="*{email}" class="error"></span> <br /><br />
 
