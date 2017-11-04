@@ -51,6 +51,7 @@ public class EntryController {
         List<Entry> todayEntry = entryDao.findByDateAndUserId(date, currentUserId);
 
         //pass to view
+        model.addAttribute("entries", entryDao.findByUserId(currentUserId));
         model.addAttribute("todayEntry", todayEntry);
         model.addAttribute("title", "days");
         model.addAttribute("entries", entryDao.findByUserIdOrderByIdDesc(currentUserId));

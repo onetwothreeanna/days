@@ -35,7 +35,7 @@ public class ScheduleController {
     @Autowired
     private BundleDao bundleDao;
 
-    @Scheduled(cron = "59 23 * * * ?", zone = "CST")
+    @Scheduled(cron = "0 59 23 * * ?", zone = "CST")
     public void addBlank(){
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
@@ -77,7 +77,7 @@ public class ScheduleController {
 
     }
 //      @Scheduled(fixedDelay = 30000)
-    @Scheduled(cron = "* 19 * * * ?", zone = "CST")
+    @Scheduled(cron = "0 0 19 * * ?", zone = "CST")
     public void notifications() throws MessagingException {
         //List of Users
         List<User> users = (List<User>) userDao.findAll();
