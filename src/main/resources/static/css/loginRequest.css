@@ -1,3 +1,57 @@
-.body {
-	background-color: #0d0d26;
+@font-face {
+    font-family: orator;
+    src: url("/css/OratorStd-Slanted.otf");
+}
+
+.page{
+    font-family: Andale mono;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 500px;
+    width: 600px;
+}
+
+h1{
+    font-family: orator;
+    font-size: 100px;
+    text-align: center;
+    color: #b0e1d9;
+    margin-top: 50px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form {
+    margin-top: 30px;
+    position: absolute;
+    text-alignment: center;
+    color:  #789995;
+    font-size: 14px;
+    font-family: Andale Mono;
+
+}
+
+label{
+    color:  #789995;
+}
+
+.logout {
+    display: inline;
+    background: #b0e1d9;
+    border: none;
+    color: #778899;
+    cursor: pointer;
+}
+
+
+nav.a{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:hover{
+    text-decoration: none;
+    color: black;
 }

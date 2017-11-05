@@ -17,31 +17,35 @@
 <div class="page">
 
     <h1 th:text="${title}">Days</h1>
-    <br />
     <h3>Register</h3>
     <br/>
-    <form method = "post" th:object="${user}">
-        <label class="form" th:for="username">Username </label>
-        <input type="text" th:field="*{username}" name="username" /> <span th:text = "${usernameError}"></span>
+    <div class="entriesform" >
 
-        <span th:errors="*{username}" class="error"></span> <br /><br />
+        <form method = "post" th:object="${user}">
+            <label  th:for="username">Username </label>
+            <input class="form-control" th:field="*{username}" name="username" />
+            <span th:text = "${usernameError}"></span>
 
-        <label class="form" th:for="password">Password </label>
-        <input type="password" th:field="*{password}" name="password" />
-        <span th:errors="*{password}" class="error"></span> <br /><br />
+            <span th:errors="*{username}" class="error"></span> <br />
 
-        <label class="form" th:for="verify">Verify Password </label>
-        <input type="password" th:field="*{verify}" name="verify" />
-        <span th:errors="*{verify}" class="error"></span> <br /><br />
+            <label  th:for="password">Password </label>
+            <input class="form-control" type="password" th:field="*{password}" name="password" />
+            <span th:errors="*{password}" class="error"></span> <br />
 
-        <label class="form" th:for="email">Email </label>
-        <input type="email" th:field="*{email}" name="email" />
-        <span th:errors="*{email}" class="error"></span> <br /><br />
+            <label  th:for="verify">Verify Password </label>
+            <input class="form-control" type="password" th:field="*{verify}" name="verify" />
+            <span th:errors="*{verify}" class="error"></span> <br />
 
-        <input class="button"  type="submit" value="Sign Up" />
-        <p th:text = "${verifyError}"/>
-
-    </form>
+            <label th:for="email">Email </label>
+            <input  class="form-control" type="email" th:field="*{email}" name="email" />
+            <span th:errors="*{email}" class="error"></span>
+            <br />
+            <input class="button"  type="submit" value="Sign Up" />
+            <p th:text = "${verifyError}"/>
+            <br/>
+            <a href="/user/login">Login</a>
+        </form>
+    </div>
 </div>
 </body>
 

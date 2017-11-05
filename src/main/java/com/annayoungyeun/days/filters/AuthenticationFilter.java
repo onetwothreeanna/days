@@ -64,7 +64,7 @@ import java.io.IOException;
          //if logged in or a a login request or a resource request, do filter.
 
 //         if there is no session, and they are not accessing the login page or the add page, stop them and redirect to login
-         if(session != null || uri.endsWith("login") || uri.endsWith("user/add") || uri.endsWith(".css")){
+         if(session != null || uri.endsWith("login") || uri.endsWith("user/add") || uri.endsWith(".css") || uri.endsWith(".otf")){
              this.context.log("-- Onward.");
              chain.doFilter(req, res);
 

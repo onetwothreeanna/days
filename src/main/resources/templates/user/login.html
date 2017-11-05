@@ -19,15 +19,16 @@
 
     <h1 th:text="${title}">Days</h1>
     <br />
-    <br />
-    <form method = "post" th:object="${login}" >
-        <label class="form" th:for="username">Username </label>
-        <input th:field="*{username}" name="username" />
-        <span th:errors="*{username}" class="error"></span> <br /><br />
+    <h3>Login</h3>
 
-        <label class="form" th:for="password">Password </label>
-        <input type="password" th:field="*{password}" name="password" />
-        <span th:errors="*{password}" class="error"></span> <br /><br />
+    <form method = "post" th:object="${login}" >
+        <label  th:for="username">Username </label>
+        <input class="form-control" th:field="*{username}" name="username" />
+        <span th:errors="*{username}" class="error"></span> <br />
+
+        <label  th:for="password">Password </label>
+        <input class="form-control" type="password" th:field="*{password}" name="password" />
+        <span th:errors="*{password}" class="error"></span> <br />
 
         <input class="button" type="submit" value="Login" /> <br />
         <p th:text = "${verifyError}"/>

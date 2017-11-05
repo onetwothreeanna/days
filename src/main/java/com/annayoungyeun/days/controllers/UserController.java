@@ -43,7 +43,7 @@ public class UserController {
 
         User userAlreadyExists = userDao.findByUsername(user.getUsername());
         if(userAlreadyExists != null){
-            model.addAttribute("title", "days Register");
+            model.addAttribute("title", "days");
             model.addAttribute("usernameError", "Username not available.");
             model.addAttribute("userPref", "");
             model.addAttribute(user);
@@ -51,7 +51,7 @@ public class UserController {
         }
 
         if (errors.hasErrors()){
-            model.addAttribute("title", "days Register");
+            model.addAttribute("title", "days");
             model.addAttribute("userPref", "");
             model.addAttribute(user);
             return "user/add";
@@ -63,6 +63,7 @@ public class UserController {
         if (user.getPassword() == null || verify == null
                 || !user.getPassword().equals(verify)) {
             passwordsMatch = false;
+            model.addAttribute("title", "days");
             model.addAttribute("verifyError", "Passwords must match");
             model.addAttribute("userPref", "");
 
@@ -84,7 +85,7 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(Model model) {
         model.addAttribute(new Login());
-        model.addAttribute("title", "days Login");
+        model.addAttribute("title", "days");
         model.addAttribute("userPref", "");
         return "user/login";
     }
@@ -93,7 +94,7 @@ public class UserController {
     public String login(@ModelAttribute @Valid Login loginAttempt, Errors errors, Model model,
                         HttpServletResponse response) {
         if (errors.hasErrors()){
-            model.addAttribute("title", "days Login");
+            model.addAttribute("title", "days");
             model.addAttribute(loginAttempt);
             model.addAttribute("userPref", "");
             return "user/login";
@@ -127,7 +128,7 @@ public class UserController {
         }
 
         //if not there, show login form again with error.
-        model.addAttribute("title", "days Login");
+        model.addAttribute("title", "days");
         model.addAttribute("verifyError", "Username or password is incorrect.");
         model.addAttribute("userPref", "");
 
@@ -141,7 +142,7 @@ public class UserController {
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(Model model) {
         model.addAttribute(new Login());
-        model.addAttribute("title", "days Logout");
+        model.addAttribute("title", "days");
         model.addAttribute("userPref", "");
         return "user/logout";
     }
@@ -162,13 +163,14 @@ public class UserController {
             userCookie.setMaxAge(0);
             userCookie.setPath("/");
             response.addCookie(userCookie);
+            model.addAttribute("title", "days");
             model.addAttribute("logoutMessage", "You have been logged out.");
             model.addAttribute("userPref", "");
 
             return "user/logout";
 
         }
-        model.addAttribute("title", "days Login");
+        model.addAttribute("title", "days");
         model.addAttribute("userPref", "");
 
         return "redirect:/user/login";
