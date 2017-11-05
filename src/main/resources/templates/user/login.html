@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head"></head>
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">days</title>
 
 
-<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/loginRequest.css}"/>
+
+</head>
+
+
+<body class="body">
 <div class="page">
 
     <h1 th:text="${title}">Days</h1>
@@ -11,7 +22,7 @@
     <br />
     <form method = "post" th:object="${login}" >
         <label class="form" th:for="username">Username </label>
-        <input type="text" th:field="*{username}" name="username" />
+        <input th:field="*{username}" name="username" />
         <span th:errors="*{username}" class="error"></span> <br /><br />
 
         <label class="form" th:for="password">Password </label>

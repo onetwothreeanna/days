@@ -61,13 +61,16 @@ import java.io.IOException;
              session = req.getSession(false);
          }
 
+         //if logged in or a a login request or a resource request, do filter.
+
 //         if there is no session, and they are not accessing the login page or the add page, stop them and redirect to login
-         if(session == null && !uri.endsWith("login") && !uri.endsWith("user/add")){
-             this.context.log(" -- Unauthorized request");
-             res.sendRedirect("/user/login");
-         } else {
+         if(session != null || uri.endsWith("login") || uri.endsWith("user/add") || uri.endsWith(".css")){
              this.context.log("-- Onward.");
              chain.doFilter(req, res);
+
+         } else {
+             this.context.log(" -- Unauthorized request");
+             res.sendRedirect("/user/login");
          }
 
 

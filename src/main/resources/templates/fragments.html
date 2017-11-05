@@ -11,6 +11,8 @@
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
     <link th:if="${#strings.contains(userPref, 'Galaxy')}" rel="stylesheet" th:href="@{/css/galaxy.css}"/>
     <link th:if="${#strings.contains(userPref, 'Daytime')}" rel="stylesheet" th:href="@{/css/daytime.css}"/>
+    <link th:unless="${userPref}" rel="stylesheet" th:href="@{/css/loginRequest.css}"/>
+
 
 
 
