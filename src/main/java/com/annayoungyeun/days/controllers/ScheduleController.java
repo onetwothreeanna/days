@@ -35,6 +35,8 @@ public class ScheduleController {
     @Autowired
     private BundleDao bundleDao;
 
+
+//    @Scheduled(fixedDelay = 30000)
     @Scheduled(cron = "0 59 23 * * ?", zone = "CST")
     public void addBlank(){
         //List of Users
@@ -47,7 +49,7 @@ public class ScheduleController {
 
         //loop through all users
         for(User user : users){
-            //find if there are entries for today's date
+//            find if there are entries for today's date
             List<Entry> todayEntry = entryDao.findByDateAndUserId(date, user.getId());
             //if there is no entry for the day, save a blank string
             if(todayEntry.size() < 1){
@@ -61,7 +63,7 @@ public class ScheduleController {
             //find all entries for user by ID desc
             List<Entry> allEntries = entryDao.findByUserIdOrderByIdDesc(user.getId());
             //if entries reaches 100, bundle into one string, store in DB.
-            if(allEntries.size() == 100){
+            if(allEntries.size() == 60){
                 Bundle freshBundle = new Bundle();
                 String BundleString = "";
                 for(Entry entry : allEntries){
@@ -76,7 +78,7 @@ public class ScheduleController {
         }
 
     }
-//      @Scheduled(fixedDelay = 30000)
+
     @Scheduled(cron = "0 0 19 * * ?", zone = "CST")
     public void notifications() throws MessagingException {
         //List of Users

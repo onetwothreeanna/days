@@ -6,12 +6,25 @@
     <div class="jumbotron">
         <a class="col-md-12" href="/days/"><h1 id="daysheader">days</h1></a>
     </div>
-
+<h3 align="center">Archive</h3>
     <div class="container">
         <div class="page">
             <div class="col-md-12">
 
             <nav th:replace="fragments :: navigation"></nav>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+
             <div class="entries">
                 <ul th:each="line : ${bundles}">
 
@@ -21,7 +34,9 @@
                        th:title="${#strings.substring(line,0,10)}"></p>
 
                 </ul>
-
+                <br/>
+                <br/>
+                <p class="bookend">...</p>
             </div>
 
             </div>

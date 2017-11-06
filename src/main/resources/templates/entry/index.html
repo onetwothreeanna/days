@@ -13,7 +13,7 @@
 
 <div class="container">
 <div class="page">
-    <p class="seeyoutomorrow col-md-12" th:unless="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
+    <p class="seeyoutomorrow col-md-12" th:if="${todayEntry} and ${todayEntry.size()}">- See you for tomorrow's post -</p>
     <p class="seeyoutomorrow col-md-12" th:unless="${entries.size()}">- Ahhh, fresh start. -</p>
 
     <nav th:replace="fragments :: navigation"></nav>
@@ -69,9 +69,19 @@
         <br/>
         <br/>
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <p class="bookend">_________________________________</p>
         <br/>
         <br/>
+
         <ul th:each="entry : ${entries}">
             <p class="tooltiptext" data-toggle="tooltip" data-placement="left" th:title="${entry.getDate()}"
                th:if="${#strings.isEmpty(entry.getEntryText())}">
