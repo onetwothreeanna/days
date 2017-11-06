@@ -11,4 +11,6 @@ After 100 posts, entries are archived, giving you a clean slate to embark on ano
 
 Users create accounts, choose from two UI themes, turn e-mail notifications on/off, and post a daily post.
 
+Low-res demo video here: https://youtu.be/FEj6mvP8z4c
+
 Java SpringMVC, some JavaScript/Bootstrap/CSS/HTML
